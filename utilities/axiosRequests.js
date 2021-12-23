@@ -1,11 +1,85 @@
-import axios from 'axios';
+import axios from "axios";
 
 //const apiUrl = process.env.NEXT_API_URL;
-const apiUrl = 'http://localhost:8080/github-integration';
+const apiUrl = "http://localhost:8080/github-integration";
 
-
+//Get all the branches of a repository
 export const getRepo = async (repoName) => {
-    const response = await axios.get(`${apiUrl}/get-branches/${repoName}`);
+  const branchData = await axios.get(`${apiUrl}/get-branches/${repoName}`);
 
-    return response.data;
-}
+  return response.data;
+};
+
+//Get Details of a branch
+const getBrancDetails = async (repoName, branchName) => {
+  const branchData = await axios.get(
+    `${apiUrl}/get-branch/${repoName}/${branchName}`
+  );
+
+  return branchData.data;
+};
+
+//Get the commits of a branch
+const getCommits = async (repoName, branchName) => {
+  const commitData = await axios.get(
+    `${apiUrl}/get-commits/${repoName}/${branchName}`
+  );
+
+  return commitData.data;
+};
+
+//Get the details of a commit
+const getCommitDetails = async (repoName, commitHash) => {
+  const commitData = await axios.get(
+    `${apiUrl}/get-commit/${repoName}/${commitHash}`
+  );
+
+  return commitData.data;
+};
+
+//Get Pull Requests of a branch
+const getPullRequests = async (repoName) => {
+  const pullRequestData = await axios.get(
+    `${apiUrl}/get-pullrequest/${repoName}`
+  );
+
+  return pullRequestData.data;
+};
+
+//Create a new Pull Request
+const createPullRequest = async (repoName, repoHead, repoBase, title, body) => {
+  const pullRequestData = await axios.post(`${apiUrl}/post-pullrequest/`, {
+    repository: repoName,
+    repoHead: repoHead,
+    repoBase: repoBase,
+    title: title,
+    body: body,
+  });
+
+  return pullRequestData.data;
+};
+
+//Update a Pull Request
+const updatePullRequest = async (repoName, prId, title, body) => {
+  const pullRequestData = await axios.put(
+    `${apiUrl}/patch-pullrequest/${prId}`,
+    {
+      repository: repoName,
+      title: title,
+      bodyText: body,
+    }
+  );
+
+  return pullRequestData.data;
+};
+
+//Merge a Pull Request
+const mergePullRequest = async (repoName, prId, prMessage) => {
+  const pullRequestData = await axios.post(`${apiUrl}/put-pullrequest/`, {
+    repository: repoName,
+    pullRequestId: prId,
+    commitMessage: prMessage,
+  });
+
+  return pullRequestData.data;
+};

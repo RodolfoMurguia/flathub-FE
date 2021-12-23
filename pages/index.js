@@ -3,16 +3,15 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { getRepo } from "../utilities/axiosRequests";
-
+import { Footer } from "../components/footer/Footer";
 
 export default function Home() {
-
   const [branches, setBranches] = React.useState("");
-  const repoName = 'fullstack-interview-test';
+  const repoName = "fullstack-interview-test";
 
-  useEffect(() => {
+  /* useEffect(() => {
     getRepo(repoName).then((data) => setBranches(data));
-  }, [])
+  }, []); */
 
   console.log(branches);
 
@@ -31,22 +30,26 @@ export default function Home() {
               alt="Flat Repo Explorer"
               width={100}
               height={100}
-            />  
+            />
           </div>
-
-         
 
           <div className="searchForm">
             <h3>Bienvenido a Flat Repo Explorer</h3>
-            <label htmlFor="search">Selecciona un repositorio para continuar:</label>
+            <label htmlFor="search">
+              Selecciona un repositorio para continuar:
+            </label>
             <br />
             <div className="searchForm__input">
               <select name="search">
-                {branches ?  branches.data.map((branch) => (
-                  <option key={branch.name} value={branch.name}>{branch.name}</option>
-                )) : 'No branches found'}
+                {branches
+                  ? branches.data.map((branch) => (
+                      <option key={branch.name} value={branch.name}>
+                        {branch.name}
+                      </option>
+                    ))
+                  : "No branches found"}
               </select>
-              <br/>
+              <br />
               <button>Buscar</button>
             </div>
           </div>

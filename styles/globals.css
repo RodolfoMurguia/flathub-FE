@@ -12,6 +12,20 @@
   background-color: #fae5b6;
 }
 
+.squaredFrameBranch{
+  border-radius: 25px;
+  border: 2px solid black;
+  padding: 0px;
+  width: 800px;
+  height: 700px;
+  position: relative;
+  margin: auto;
+  margin-top: 40px;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #fae5b6;
+}
+
 .squaredFrame__content {
   border: 2px solid red;
   padding: 0px;
@@ -71,3 +85,33 @@ button {
   border-radius: 10px;
   margin-right: 10px;
 }
+
+.branchContainer {
+  height: 100px;
+  width: 400px;
+  border-radius: 5px;
+  border : 2px solid black;
+  position: relative;
+  vertical-align: middle;
+  text-align: justify;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.commitContainer {
+  height: 300px;
+  width: 700px;
+  border-radius: 5px;
+  border : 2px solid black;
+  position: relative;
+  vertical-align: middle;
+  text-align: justify;
+  margin: auto;
+  max-height: 600px;
+}
+
+.commitContainer{
+  background-color: #ff5a5a;
+  height: 50px;
+}
+
