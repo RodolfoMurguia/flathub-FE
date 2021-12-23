@@ -12,11 +12,11 @@
   background-color: #fae5b6;
 }
 
-.squaredFrameBranch{
+.squaredFrameBranch {
   border-radius: 25px;
   border: 2px solid black;
   padding: 0px;
-  width: 800px;
+  width: 1000px;
   height: 700px;
   position: relative;
   margin: auto;
@@ -90,28 +90,83 @@ button {
   height: 100px;
   width: 400px;
   border-radius: 5px;
-  border : 2px solid black;
+  border: 2px solid black;
   position: relative;
   vertical-align: middle;
   text-align: justify;
   margin: auto;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .commitContainer {
-  height: 300px;
-  width: 700px;
+  background-color: white; /*#ff5a5a;*/
+  height: auto;
+  width: auto;
+  max-height: 800px;
+  max-width: 900px;
   border-radius: 5px;
-  border : 2px solid black;
+  border: 2px solid black;
   position: relative;
   vertical-align: middle;
   text-align: justify;
   margin: auto;
-  max-height: 600px;
 }
 
-.commitContainer{
+.commitContainer table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+  padding: 0;
+  table-layout: auto;
+}
+
+.commitContainer tr:hover {
+  background-color: #ddd;
+}
+
+.commitContainer tr{
+  border-bottom: 1px solid #ddd;
+  text-align: justify;
+}
+
+.commitContainer th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
   background-color: #ff5a5a;
-  height: 50px;
+  color: black;
+}
+.commitContainer tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
+.commitContainer td th {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
+
+.sha {
+  width: 10%;
+  text-align: center;
+  margin: 5px;
+}
+
+.author {
+  width: 10%;
+  text-align: center;
+  margin: 5px;
+}
+
+.date {
+  width: 15%;
+  text-align: center;
+  margin: 5px;
+}
+
+.commitDetailButton {
+  width: 10%;
+  text-align: center;
+  margin: 5px;
+}

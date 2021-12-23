@@ -1,19 +1,27 @@
 import Head from "next/head";
 import React, { useEffect } from "react";
-import { useRouter } from "next/router";
+import Link from "next/link";
 import Image from "next/image";
 import { getRepo } from "../utilities/axiosRequests";
-import { Footer } from "../components/footer/Footer";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+
+  const [selectedBranch, setSelectedBranch] = React.useState("");
   const [branches, setBranches] = React.useState("");
   const repoName = "fullstack-interview-test";
 
-  /* useEffect(() => {
+  useEffect(() => {
     getRepo(repoName).then((data) => setBranches(data));
-  }, []); */
+  }, []);
 
-  console.log(branches);
+ const handleClick = (branch) => {
+    console.log(branch);
+    //router.push(`/branch?branch=${branch}`);
+  };
+
+  //pending on change selected branch
 
   return (
     <div className="container">
@@ -40,7 +48,8 @@ export default function Home() {
             </label>
             <br />
             <div className="searchForm__input">
-              <select name="search">
+              
+              <select name="search" value={selectedBranch} onChange={(e) => setSelectedBranch(e.target.value)}>
                 {branches
                   ? branches.data.map((branch) => (
                       <option key={branch.name} value={branch.name}>
@@ -50,7 +59,7 @@ export default function Home() {
                   : "No branches found"}
               </select>
               <br />
-              <button>Buscar</button>
+              <button onClick={handleClick}>Buscar</button>
             </div>
           </div>
         </div>
@@ -58,7 +67,7 @@ export default function Home() {
 
       <footer>
         <p className="text-center">
-          Developed by: Rodolfo Murguia Copyright &copy; flat.mx{" "}
+          Developed by: Rodolfo Murguia Copyright &copy; <a href="https://www.flat.mx/">flat.mx</a>{" "}
         </p>
       </footer>
     </div>

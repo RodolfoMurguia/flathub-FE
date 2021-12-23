@@ -7,11 +7,11 @@ const apiUrl = "http://localhost:8080/github-integration";
 export const getRepo = async (repoName) => {
   const branchData = await axios.get(`${apiUrl}/get-branches/${repoName}`);
 
-  return response.data;
+  return branchData.data;
 };
 
 //Get Details of a branch
-const getBrancDetails = async (repoName, branchName) => {
+export const getBrancDetails = async (repoName, branchName) => {
   const branchData = await axios.get(
     `${apiUrl}/get-branch/${repoName}/${branchName}`
   );
@@ -20,7 +20,7 @@ const getBrancDetails = async (repoName, branchName) => {
 };
 
 //Get the commits of a branch
-const getCommits = async (repoName, branchName) => {
+export const getCommits = async (repoName, branchName) => {
   const commitData = await axios.get(
     `${apiUrl}/get-commits/${repoName}/${branchName}`
   );
