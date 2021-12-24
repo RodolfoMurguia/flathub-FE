@@ -29,7 +29,7 @@ export const getCommits = async (repoName, branchName) => {
 };
 
 //Get the details of a commit
-const getCommitDetails = async (repoName, commitHash) => {
+export const getCommitDetails = async (repoName, commitHash) => {
   const commitData = await axios.get(
     `${apiUrl}/get-commit/${repoName}/${commitHash}`
   );
