@@ -228,3 +228,75 @@ button {
 }
 
 /*COMMIT DETAIL SECTION END*/
+
+/*Pull Requests SECTION END*/
+
+.prContainer {
+  background-color: white; /*#ff5a5a;*/
+  height: auto;
+  width: auto;
+  max-height: 800px;
+  max-width: 900px;
+  border-radius: 5px;
+  border: 2px solid black;
+  position: relative;
+  vertical-align: middle;
+  text-align: justify;
+  margin: auto;
+}
+
+.prContainer table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+  padding: 0;
+  table-layout: auto;
+}
+
+.prContainer tr:hover {
+  background-color: #ddd;
+}
+
+.prContainer tr{
+  border-bottom: 1px solid #ddd;
+  text-align: justify;
+}
+
+.prContainer th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #ff5a5a;
+  color: black;
+}
+.prContainer tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.prContainer td th {
+  border: 1px solid #ddd;
+  padding: 6px;
+  margin-bottom: 10px;
+}
+
+.tableCol {
+  width: 5%;
+  text-align: center;
+  margin: 5px;
+}
+
+.tableCol_2 {
+  width: 5%;
+  text-align: center;
+  margin: 5px;
+}
+
+/*Pull Requests SECTION END*/
+
+.buttonContainer{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}

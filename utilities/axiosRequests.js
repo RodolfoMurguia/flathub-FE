@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //const apiUrl = process.env.NEXT_API_URL;
-const apiUrl = "http://localhost:8080/github-integration";
+const apiUrl =  "http://localhost:8080/github-integration";
 
 //Get all the branches of a repository
 export const getRepo = async (repoName) => {
@@ -38,7 +38,7 @@ export const getCommitDetails = async (repoName, commitHash) => {
 };
 
 //Get Pull Requests of a branch
-const getPullRequests = async (repoName) => {
+export const getPullRequests = async (repoName) => {
   const pullRequestData = await axios.get(
     `${apiUrl}/get-pullrequest/${repoName}`
   );
@@ -47,7 +47,7 @@ const getPullRequests = async (repoName) => {
 };
 
 //Create a new Pull Request
-const createPullRequest = async (repoName, repoHead, repoBase, title, body) => {
+export const createPullRequest = async (repoName, repoHead, repoBase, title, body) => {
   const pullRequestData = await axios.post(`${apiUrl}/post-pullrequest/`, {
     repository: repoName,
     repoHead: repoHead,
@@ -60,7 +60,7 @@ const createPullRequest = async (repoName, repoHead, repoBase, title, body) => {
 };
 
 //Update a Pull Request
-const updatePullRequest = async (repoName, prId, title, body) => {
+export const updatePullRequest = async (repoName, prId, title, body) => {
   const pullRequestData = await axios.put(
     `${apiUrl}/patch-pullrequest/${prId}`,
     {
@@ -74,7 +74,7 @@ const updatePullRequest = async (repoName, prId, title, body) => {
 };
 
 //Merge a Pull Request
-const mergePullRequest = async (repoName, prId, prMessage) => {
+export const mergePullRequest = async (repoName, prId, prMessage) => {
   const pullRequestData = await axios.post(`${apiUrl}/put-pullrequest/`, {
     repository: repoName,
     pullRequestId: prId,
