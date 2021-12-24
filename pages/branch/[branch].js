@@ -24,10 +24,11 @@ const branch = () => {
   }, []);
 
   React.useEffect(() => {
-    getBrancDetails(repoName, branch).then((data) => setBranchData(data));
+    getBrancDetails(repoName, branch).then((data) => setBranchData(data.data));
   }, []);
   //Log
-  //console.log(commits);
+
+  //console.log(branchData);
 
   return (
     <div className="container">
@@ -48,22 +49,37 @@ const branch = () => {
           </div>
 
           <div className="searchForm">
-            <h3>Vista General de la rama: {branch}</h3>
+            <h3>Vista General de la rama</h3>
 
             <div className="branchContainer">
-              <p>Creado por:</p>
-
-              <p>Creado por:</p>
+              <div className="branchContainer__details">
+                <p>
+                  <span>Nombre de la Rama: </span>
+                  {branchData.name}
+                </p>
+                <p>
+                  <span>Autor: </span>
+                  {branchData ? branchData.author : "N/A"}
+                </p>
+                <p>
+                  <span>Fecha de Creacion: </span>
+                  {branchData ? branchData.commit.author.date.substring(0,10): "N/A"}
+                </p>
+                <p>
+                  <span>Email del autor: </span>
+                  {branchData ? branchData.commit.author.email : "N/A"}
+                </p>
+              </div>
             </div>
 
             <div className="commitContainer">
               <table>
                 <tr>
                   <th>Commit Id</th>
-                  <th>Author</th>
-                  <th>Message</th>
-                  <th>Date</th>
-                  <th>Details</th>
+                  <th>Autor</th>
+                  <th>Mensaje</th>
+                  <th>Fecha</th>
+                  <th>Detalles</th>
                 </tr>
                 {commits
                   ? commits.data.map((commit) => (
