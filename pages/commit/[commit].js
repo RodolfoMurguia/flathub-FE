@@ -1,10 +1,10 @@
-import Head from "next/head";
-import Link from "next/link";
-import Image from "next/image";
-import React, { useEffect } from "react";
-import { getCommitDetails } from "../../utilities/axiosRequests";
+import Head from 'next/head';
+import Link from 'next/link';
+import Image from 'next/image';
+import React, { useEffect } from 'react';
+import { getCommitDetails } from '../../utilities/axiosRequests';
 
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 const commit = () => {
   //we define the router, and recover the commit id
@@ -17,10 +17,10 @@ const commit = () => {
 
   //variables and states
   const commit =
-    router.query.commit || "3e489f26eb5eaca5e66812223f00dc33185dd9ed";
+    router.query.commit || '3e489f26eb5eaca5e66812223f00dc33185dd9ed';
 
-  const repoName = "fullstack-interview-test";
-  const [selectedCommit, setSelectedCommit] = React.useState("");
+  const repoName = 'fullstack-interview-test';
+  const [selectedCommit, setSelectedCommit] = React.useState('');
 
   //we call the axios request to get the commit
   React.useEffect(() => {
@@ -29,6 +29,8 @@ const commit = () => {
 
   //
   var commitDataDetail = selectedCommit.data;
+
+  console.log(selectedCommit);
 
   return (
     <div className="container__commitDetail">
@@ -53,56 +55,60 @@ const commit = () => {
               <h3>Detalle de commit</h3>
             </div>
 
-            <div className="commitDetailForm__content"> 
-            
-            </div>
-
             <div className="commit__DetailContainer">
               <p>
                 <span>Identificador del Commit: </span>
-                {selectedCommit ? selectedCommit.shaIndex : "N/A"}
+                {commitDataDetail ? commitDataDetail.sha : 'N/A'}
               </p>
               <p>
                 <span>SHA del Commit: </span>
-                {selectedCommit ? selectedCommit.shaIndex : "N/A"}
+                {commitDataDetail ? commitDataDetail.shaIndex : 'N/A'}
               </p>
               <p>
                 <span>Mensaje del Commit: </span>
-                {selectedCommit ? selectedCommit.shaIndex : "N/A"}
+                {commitDataDetail ? commitDataDetail.message : 'N/A'}
               </p>
               <p>
                 <span>Fecha del Commit: </span>
-                {selectedCommit ? selectedCommit.shaIndex : "N/A"}
+                {commitDataDetail ? commitDataDetail.date : 'N/A'}
               </p>
               <p>
                 <span>Autor del Commit: </span>
-                {selectedCommit ? selectedCommit.shaIndex : "N/A"}
+                {commitDataDetail ? commitDataDetail.author : 'N/A'}
               </p>
               <p>
                 <span>Email del autor del Commit: </span>
-                {selectedCommit ? selectedCommit.shaIndex : "N/A"}
+                {commitDataDetail ? commitDataDetail.authorEmail : 'N/A'}
               </p>
+
+              <button onClick={(e) => router.push(`/`)}>
+                <Image
+                  src={`/flecha-hacia-atras.png`}
+                  alt="Flat Repo Explorer"
+                  width={25}
+                  height={25}
+                />
+              </button>
             </div>
 
-            <div className="commitDetailForm__back">
-                <button>
-                    <Image
-                    src={`/flecha-hacia-atras.png`}
-                    alt="Flat Repo Explorer"
-                    width={25}
-                    height={25}
-                    />
-                </button>
-            </div>
-
+            {/* <div className="commitDetailForm__back">
+              <button>
+                <Image
+                  src={`/flecha-hacia-atras.png`}
+                  alt="Flat Repo Explorer"
+                  width={25}
+                  height={25}
+                />
+              </button>
+            </div> */}
           </div>
         </div>
       </main>
 
       <footer>
         <p className="text-center">
-          Developed by: Rodolfo Murguia Copyright &copy;{" "}
-          <a href="https://www.flat.mx/">flat.mx</a>{" "}
+          Developed by: Rodolfo Murguia Copyright &copy;{' '}
+          <a href="https://www.flat.mx/">flat.mx</a>{' '}
         </p>
       </footer>
     </div>

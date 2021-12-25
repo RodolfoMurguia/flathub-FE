@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 //const apiUrl = process.env.NEXT_API_URL;
-const apiUrl =  "http://localhost:8080/github-integration";
+const apiUrl = 'http://localhost:8080/github-integration';
 
 //Get all the branches of a repository
 export const getRepo = async (repoName) => {
@@ -47,7 +47,13 @@ export const getPullRequests = async (repoName) => {
 };
 
 //Create a new Pull Request
-export const createPullRequest = async (repoName, repoHead, repoBase, title, body) => {
+export const createPullRequest = async (
+  repoName,
+  repoHead,
+  repoBase,
+  title,
+  body
+) => {
   const pullRequestData = await axios.post(`${apiUrl}/post-pullrequest/`, {
     repository: repoName,
     repoHead: repoHead,

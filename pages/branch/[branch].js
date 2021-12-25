@@ -1,10 +1,10 @@
-import React from "react";
-import Head from "next/head";
-import Image from "next/image";
-import { getBrancDetails, getCommits } from "../../utilities/axiosRequests";
-import { Router, useRouter } from "next/router";
+import React from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
+import { getBrancDetails, getCommits } from '../../utilities/axiosRequests';
+import { useRouter } from 'next/router';
 
-const branch = () => {
+const Branch = () => {
   const router = useRouter();
 
   //added efect to validate if router.query.branch exist
@@ -12,11 +12,11 @@ const branch = () => {
     if (!router.isReady) return;
   }, [router.isReady]);
 
-  let branch = router.query.branch || "master";
+  let branch = router.query.branch || 'master';
 
-  const [commits, setCommits] = React.useState("");
-  const [branchData, setBranchData] = React.useState("");
-  const repoName = "fullstack-interview-test";
+  const [commits, setCommits] = React.useState('');
+  const [branchData, setBranchData] = React.useState('');
+  const repoName = 'fullstack-interview-test';
 
   //get the commits of the branch and the details of the branch
   React.useEffect(() => {
@@ -29,6 +29,12 @@ const branch = () => {
   //Log
 
   //console.log(branchData);
+
+  // const commitDetails = (e) => {
+  //   e.preventDefault();
+  //   console.log(e.target.value);
+  //   // router.push(`/commit/${commit.shaId}`);
+  // };
 
   return (
     <div className="container">
@@ -59,15 +65,17 @@ const branch = () => {
                 </p>
                 <p>
                   <span>Autor: </span>
-                  {branchData ? branchData.author : "N/A"}
+                  {branchData ? branchData.author : 'N/A'}
                 </p>
                 <p>
                   <span>Fecha de Creacion: </span>
-                  {branchData ? branchData.commit.author.date.substring(0,10): "N/A"}
+                  {branchData
+                    ? branchData.commit.author.date.substring(0, 10)
+                    : 'N/A'}
                 </p>
                 <p>
                   <span>Email del autor: </span>
-                  {branchData ? branchData.commit.author.email : "N/A"}
+                  {branchData ? branchData.commit.author.email : 'N/A'}
                 </p>
               </div>
             </div>
@@ -84,19 +92,29 @@ const branch = () => {
                 {commits
                   ? commits.data.map((commit) => (
                       <tr>
-                        <td className="sha">{commit.shaId}</td>
+                        <td className="sha" value={commit.shaId}>
+                          {commit.shaId}
+                        </td>
                         <td className="author">{commit.author}</td>
                         <td className="message">{commit.message}</td>
-                        <td className="date">{commit.date.substring(0,10)}</td>
+                        <td className="date">{commit.date.substring(0, 10)}</td>
                         <td className="commitDetailButton">
-                          <Image
-                            src={`/boton-mas.png`}  alt="details"
-                            width={25}  height={25}
-                          />
+                          <button
+                            onClick={(e) =>
+                              router.push(`/commit/${commit.shaId}`)
+                            }
+                          >
+                            <Image
+                              src={`/boton-mas.png`}
+                              alt="details"
+                              width={25}
+                              height={25}
+                            />
+                          </button>
                         </td>
                       </tr>
                     ))
-                  : "No commits found"}
+                  : 'No commits found'}
               </table>
             </div>
           </div>
@@ -105,11 +123,11 @@ const branch = () => {
 
       <footer>
         <p className="text-center">
-          Developed by: Rodolfo Murguia Copyright &copy; flat.mx{" "}
+          Developed by: Rodolfo Murguia Copyright &copy; flat.mx{' '}
         </p>
       </footer>
     </div>
   );
 };
 
-export default branch;
+export default Branch;
